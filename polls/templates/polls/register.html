@@ -1,0 +1,34 @@
+{% extends 'polls/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}RRRRegister{% endblock %}
+
+{% block body_block %}
+    <h1>Register</h1>
+
+    {% if registered %}
+    <strong>Thank you for registering!</strong>
+    <a href="/polls/">Return to the homepage.</a><br />
+    {% else %}
+    <strong>Register here!</strong><br />
+    <i>NOTE: Please don't use the same password for every site, any web developer could simply steal
+    your passord and e-mail from a registration form and try it on all kinds of websites.</i>
+    {% crispy user_form %}
+
+<!--    <form id="user_form" method="post" action="/polls/register/"
+            enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <!-- Display each form. The as_p method wraps each element in a paragraph
+             (<p>) element. This ensures each element appears on a new line,
+             making everything look neater. -->
+<!--        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+
+        <!-- Provide a button to click to submit the form. -->
+<!--        <input type="submit" name="submit" value="Register" />
+    </form>
+        -->
+    {% endif %}
+{% endblock %}

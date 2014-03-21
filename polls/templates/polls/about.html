@@ -1,0 +1,31 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block title %}Polls{% endblock %}
+
+{% block body_block %}
+    <h1>About: </h1>
+    <p>
+        Code taken mostly from my copies of the offical Django tutorial and Tango With Django.
+    </p>
+    <p>
+        Made with: Django, django_crispy_forms, yeoman, sass (probably more but I can't remember them all right now.)
+    </p>
+
+    <p>
+        Yes, I did keep the button from the yeoman installation because I think it looks nice!
+    </p>
+    <br>
+    <p>
+        To Add:
+        <ul>
+            <li>SSL</li>
+            <li>Google Charts API</li>
+            <li>view counter on about page</li>
+            <li>prettier template</li>
+            <li>Make sure all pages validate!</li>
+            <li>Give polls an ID so that choices can be linked to them not by name.</li>
+        </ul>
+    </p>
+
+{% endblock %}

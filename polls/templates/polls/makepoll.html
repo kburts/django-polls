@@ -1,0 +1,37 @@
+{% extends 'polls/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body_block %}
+        <div class="container">
+            <div class="row">
+                    {% crispy form %}
+                <div id="choices_form">
+                    {% crispy choiceform %}
+                </div>
+                <div id="add_field" class="btn btn-primary">+</div>
+            </div>
+        </div>
+
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js">
+      </script>
+
+
+    <script>
+        $('#add_field').html('ADD FIERRRLD');
+        //$('#add_field').click(function() {
+        //  alert('clicked');
+        //})
+
+        // http://stackoverflow.com/questions/6099301/dynamically-adding-html-form-field-using-jquery
+        $('#add_field').click(function() {
+          alert('CLICKED!');
+          $("<input type='text' value='ab' />")
+           console.log('got here')
+           .attr("id", "choices_form")
+           .attr("name", "choices_form")
+           .appendTo("id_form-0-choice_text");
+          });
+        </script>
+
+{% endblock %}
+    

@@ -1,0 +1,26 @@
+{% extends 'polls/base.html' %}
+
+{% block body_block %}
+
+    <div class="row">
+        <div class="panel panel-default">
+                <div class="panel-heading">Most Recent Polls by: {{ user }}</div>
+                <div class="panel-body">
+                    <div class="row">
+                          {% if polls %}
+                            {% for poll in polls %}
+                              <ul>
+                                <li><a href="{% url 'polls:detail' poll.id %}"> {{ poll.question }}</a></li>
+                              </ul>
+                            {% endfor %}
+
+                            {% else %}
+                              <p>No polls are available for this user.</p>
+                          {% endif %}
+
+
+                    </div>
+                </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'polls/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login{% endblock %}
+
+{% block body_block %}
+    <h1>Login</h1>
+
+<!--
+    <form id="login_form" method="post" action="/polls/login/" role="form">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+            <input type="text" name="username" value="" size="50" />
+        </div>
+        Password: <input type="password" name="password" value="" size="50" />
+
+
+        <input type="submit" value="submit" class="btn btn-primary" />
+    </form>
+
+-->
+    <form id="login_form" method="post" action="/polls/login/" role="form">
+    {% csrf_token %}
+      <div class="form-group" id="login_form" method="post" action="/polls/login">
+        <label for="exampleInputEmail1">Username</label>
+        <input type="text" class="form-control" name="username" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" name="password" value="" size="50" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <p class="help-block">Or if you need an account, <a href="/polls/register">Register</a>.</p>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+{% endblock %}
