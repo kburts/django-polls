@@ -7,7 +7,7 @@ urlpatterns = patterns('',
     url(r'^about/$', views.About.as_view(), name='about'),
     url(r'^makepoll/$', views.MakePollView, name="makepoll"),
     url(r'^newpoll/$', views.MakePollView, name="makepoll"),
-    url(r'^makechoices/(?P<poll_id>\d+)/$', views.MakeChoicesView, name="makepoll"),
+    #url(r'^makechoices/(?P<poll_id>\d+)/$', views.MakeChoicesView, name="makepoll"),
     url(r'^user/(?P<user>\w+)/$', views.UserView, name="view_user"),
 
     url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),

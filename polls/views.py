@@ -12,7 +12,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from polls.models import Choice, Poll
-from polls.forms import MakePoll, UserForm, UserProfileForm, MakeChoices
+from polls.forms import MakePoll, UserForm, UserProfileForm, MakeChoices, ChoiceForm
 
 
 class About(generic.TemplateView):
@@ -87,29 +87,48 @@ def vote(request, poll_id):
 def MakePollView(request):
     if request.method == 'POST': # If the form has been submitted...
         form = MakePoll(request.POST) # A form bound to the POST data
-        choiceform = MakeChoices(request.POST)
-        if (form.is_valid and choiceform.is_valid)():
+        #choiceform = ChoiceForm(request.POST)
+        MakeChoicesFormSet = formset_factory(ChoiceForm,extra=2)
+
+        choiceformset = MakeChoicesFormSet()
+	#choiceformset = formset(MakeChoices, extra=2)
+	if (form.is_valid):# and choiceformset.is_valid()):
             #print form.cleaned_data
             new_instance = form.save(commit=False)
             if request.user.is_authenticated():
                 new_instance.user = request.user
-            new_instance.save()
+	
+	    #choiceformset.errors          
+	    print choiceformset.is_valid()
+	    choiceformset.errors
+	    print 'passed section with possible errors'
+	    choices = []
+	    for choice in choiceformset:
+	        print choice.save(commit=False)
+		print 'SAVED A CHOICE'
+		choices.append(choice)
+	    print choices
+	    for c in choices:
+		print c.choice_text
+#	    for question in choiceformset:
+#		print question
+	    new_instance.save()
 
-            choice0 = Choice.objects.create(poll = Poll.objects.get(id = new_instance.id), choice_text = form.cleaned_data.get('choice'))
+            #choice0 = Choice.objects.create(poll = Poll.objects.get(id = new_instance.id), choice_text = form.cleaned_data.get('choice'))
 
-            choice0.save()
+            #choice0.save()
 
             return HttpResponseRedirect('/polls/') # Redirect after POST
     else:
         form = MakePoll() # An unbound form
-        choiceform = formset_factory(MakeChoices, extra=2)
-
+        choiceformset = formset_factory(ChoiceForm, extra=2)
+ 
     return render(request, 'polls/makepoll.html', {
         'form': form,
-        'choiceform': choiceform,
+        'choiceformset': choiceformset,
         }
     )
-
+'''
 def MakeChoicesView(request, poll_id):
     if request.method == 'POST':
         form = MakeChoices(request.POST, poll_id)
@@ -123,7 +142,7 @@ def MakeChoicesView(request, poll_id):
     return render(request, 'polls/makepoll.html', {
         'form': form,
     })
-
+'''
 def register(request):
     # Like before, get the request's context.
     context = RequestContext(request)

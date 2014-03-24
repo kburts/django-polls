@@ -42,18 +42,23 @@ class MakeChoices(forms.ModelForm):
     choice_text = forms.CharField(max_length=200)
 '''
 
+class ChoiceForm(forms.ModelForm):
+    class Meta:
+	model = Choice
+	fields = ['choice_text']
+
+
 class MakePoll(forms.ModelForm):
     class Meta:
         model = Poll
         exclude = ['user']
-    choice = forms.CharField(max_length=200)
-
+    #choice = forms.CharField(max_length=200)
     helper = FormHelper()
     helper.form_method = 'POST'
     helper.layout = Layout(
         Field('question'),
         Field('pub_date', type='hidden'),
-        Field('choice'),
+        #Field('choice'),
         FormActions(Submit('post', 'Post!', css_class='btn-primary')),
     )
 

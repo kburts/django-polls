@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.sites', 
     #'django.contrib.flatpages',
     'crispy_forms',
+    'django_extensions',
     #'south',
     'polls',
 )
