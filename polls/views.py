@@ -88,9 +88,9 @@ def MakePollView(request):
     if request.method == 'POST': # If the form has been submitted...
         form = MakePoll(request.POST) # A form bound to the POST data
         #choiceform = ChoiceForm(request.POST)
-        MakeChoicesFormSet = formset_factory(ChoiceForm,extra=2)
+        MakeChoicesFormSet = formset_factory(MakeChoices,extra=2)
 
-        choiceformset = MakeChoicesFormSet()
+        choiceformset = MakeChoicesFormSet(request.POST)
 	#choiceformset = formset(MakeChoices, extra=2)
 	if (form.is_valid):# and choiceformset.is_valid()):
             #print form.cleaned_data
@@ -99,8 +99,6 @@ def MakePollView(request):
                 new_instance.user = request.user
 	
 	    #choiceformset.errors          
-	    print choiceformset.is_valid()
-	    choiceformset.errors
 	    print 'passed section with possible errors'
 	    choices = []
 	    for choice in choiceformset:
