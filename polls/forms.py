@@ -5,13 +5,12 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Div, Layout, Submit, Button, HTML, Field
 from crispy_forms.bootstrap import PrependedText, FormActions
 
-from django.forms.formsets import formset_factory
+from django.forms.models import inlineformset_factory
 
-from polls.models import Poll, Choice, MakePoll, UserProfile
-from django.forms.formsets import formset_factory
-from django.forms.models import BaseInlineFormSet, inlineformset_factory
+from .models import Poll, Choice, UserProfile
 
-class UserForm(forms.ModelForm):
+
+class UserForm(ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     #email = forms.EmailField(max_length=100, required=False)
     class Meta:
@@ -23,29 +22,34 @@ class UserForm(forms.ModelForm):
     helper.form_method = 'POST'
     helper.add_input(Submit('post', 'post', css_class='btn-primary'))
 
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        fields = ('website', 'picture')
 
 class LoginForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password')
 
-'''
-class MakeChoices(forms.ModelForm):
-    class Meta:
-        model = Choice
-        exclude = ['poll', 'votes']
-    #poll = Poll.objects.get(id=1)
-    choice_text = forms.CharField(max_length=200)
-'''
 
+
+class UserProfileForm(ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('website', 'picture')
+
+
+class PollForm(forms.ModelForm):
+    class Meta:
+        model = Poll
+        #fields = ('question')
+
+
+ChoiceFormset = inlineformset_factory(Poll, Choice,
+    fields=('choice_text',), can_delete=False)
+
+'''
 class ChoiceForm(forms.ModelForm):
     class Meta:
-	model = Choice
-	fields = ['choice_text']
+        model = Choice
+        fields = ['choice_text']
 
 
 class MakePoll(forms.ModelForm):
@@ -62,7 +66,8 @@ class MakePoll(forms.ModelForm):
         FormActions(Submit('post', 'Post!', css_class='btn-primary')),
     )
 
+
 class MakeChoices(forms.Form):
     choice_text = forms.CharField(max_length=200, required=False)
-
+'''
 

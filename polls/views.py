@@ -7,12 +7,13 @@ from django.utils import timezone
 from django.views import generic
 from django.views.generic.edit import CreateView
 from django.forms.formsets import formset_factory
-
+from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from polls.models import Choice, Poll
-from polls.forms import MakePoll, UserForm, UserProfileForm, MakeChoices, ChoiceForm
+#from polls.forms import MakePoll, UserForm, UserProfileForm, MakeChoices, ChoiceForm
+from .forms import PollForm, ChoiceFormset, UserForm, UserProfileForm
 
 
 class About(generic.TemplateView):
@@ -86,44 +87,29 @@ def vote(request, poll_id):
 
 def MakePollView(request):
     if request.method == 'POST': # If the form has been submitted...
-        form = MakePoll(request.POST) # A form bound to the POST data
-        #choiceform = ChoiceForm(request.POST)
-        MakeChoicesFormSet = formset_factory(MakeChoices,extra=2)
+        form = PollForm(request.POST) # A form bound to the POST data
 
-        choiceformset = MakeChoicesFormSet(request.POST)
-	#choiceformset = formset(MakeChoices, extra=2)
-	if (form.is_valid):# and choiceformset.is_valid()):
-            #print form.cleaned_data
-            new_instance = form.save(commit=False)
+        if form.is_valid():
             if request.user.is_authenticated():
-                new_instance.user = request.user
-	
-	    #choiceformset.errors          
-	    print 'passed section with possible errors'
-	    choices = []
-	    for choice in choiceformset:
-	        print choice.save(commit=False)
-		print 'SAVED A CHOICE'
-		choices.append(choice)
-	    print choices
-	    for c in choices:
-		print c.choice_text
-#	    for question in choiceformset:
-#		print question
-	    new_instance.save()
+                form.save(commit=False)
+                form.user = request.user
+            question = form.save()
 
-            #choice0 = Choice.objects.create(poll = Poll.objects.get(id = new_instance.id), choice_text = form.cleaned_data.get('choice'))
+            choice_formset = ChoiceFormset(request.POST, instance=question)
+            if choice_formset.is_valid():
+                choice_formset.save()
 
-            #choice0.save()
+
+                print 'valid formset!! yippee'
 
             return HttpResponseRedirect('/polls/') # Redirect after POST
     else:
-        form = MakePoll() # An unbound form
-        choiceformset = formset_factory(ChoiceForm, extra=2)
+        form = PollForm()
+        choice_formset = ChoiceFormset()
  
     return render(request, 'polls/makepoll.html', {
         'form': form,
-        'choiceformset': choiceformset,
+        'choice_formset': choice_formset,
         }
     )
 '''

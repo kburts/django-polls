@@ -1,5 +1,5 @@
 from django.contrib import admin
-from polls.models import Poll, Choice, MakePoll
+from polls.models import Poll, Choice
 
 
 class ChoiceInline(admin.TabularInline):
