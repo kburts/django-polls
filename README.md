@@ -1,6 +1,7 @@
-Simple polls app written in Django to help me learn:
+Django-Polls:
 ==============
-
+Simple polls app written in Django to help me learn.
+-------------
 - jQuery: Adding a field to a form dynamicly by pressing a button.
 - django-crispy-forms: Display said forms.
 - User Authentication/Oauth2: Industry standard and very usefule to know.
