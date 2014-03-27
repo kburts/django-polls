@@ -20,20 +20,30 @@
               </form>
               <div id="add_field" class="btn btn-primary">+</div>
             </div>
+            {{ choice_formset.management_form }}
         </div>
 
-
-<!--
+{% endblock body_block %}
+    
+{% block scripts %}
     <script src="http://code.jquery.com/jquery-2.1.0.min.js">
       </script>
 
+    <script>
+      $( document ).ready(function() {
+        $('#add_field').html('addfield');
+
+        $('#add_field').click(function() {
+           alert('clicked');
+           console.log('got here!!');
+        })
+
+      });
+
+    </script>
 
     <script>
-        $('#add_field').html('ADD FIERRRLD');
-        //$('#add_field').click(function() {
-        //  alert('clicked');
-        //})
-
+    $( document ).ready(function() {
         // http://stackoverflow.com/questions/6099301/dynamically-adding-html-form-field-using-jquery
         $('#add_field').click(function() {
           alert('CLICKED!');
@@ -43,7 +53,6 @@
            .attr("name", "choices_form")
            .appendTo("id_form-0-choice_text");
           });
-        </script>
--->
-{% endblock body_block %}
-    
+    });
+    </script>
+{% endblock %}

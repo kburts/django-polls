@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c84e5d2a-9a5f-4c0c-b987-cc6733633f1e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polls/templates/polls/base.html" afterPath="$PROJECT_DIR$/polls/templates/polls/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database2.db" afterPath="$PROJECT_DIR$/database2.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polls/templates/polls/makepoll.html" afterPath="$PROJECT_DIR$/polls/templates/polls/makepoll.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="django-polls.iws" />
@@ -45,19 +48,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="621" selection-end="621" vertical-scroll-proportion="0.5216606" vertical-offset="0" max-vertical-offset="554">
+            <state line="17" column="0" selection-start="621" selection-end="621" vertical-scroll-proportion="-11.56" vertical-offset="0" max-vertical-offset="391">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="makepoll.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="makepoll.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/polls/templates/polls/makepoll.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="29" selection-start="183" selection-end="183" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="935">
+            <state line="9" column="7" selection-start="161" selection-end="161" vertical-scroll-proportion="0.18888889" vertical-offset="51" max-vertical-offset="1071">
               <folding />
             </state>
           </provider>
@@ -75,7 +78,7 @@
       <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/polls/templates/polls/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="19" selection-start="2140" selection-end="2140" vertical-scroll-proportion="-10.961538" vertical-offset="616" max-vertical-offset="1156">
+            <state line="27" column="32" selection-start="1206" selection-end="1206" vertical-scroll-proportion="-3.1153846" vertical-offset="378" max-vertical-offset="986">
               <folding />
             </state>
           </provider>
@@ -141,12 +144,12 @@
         <option value="$PROJECT_DIR$/polls/templates/polls/login.html" />
         <option value="$PROJECT_DIR$/polls/models.py" />
         <option value="$PROJECT_DIR$/polls/admin.py" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/base.html" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/makepoll.html" />
         <option value="$PROJECT_DIR$/mysite/settings.py" />
         <option value="$PROJECT_DIR$/polls/forms.py" />
         <option value="$PROJECT_DIR$/polls/views.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/base.html" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/makepoll.html" />
       </list>
     </option>
   </component>
@@ -424,7 +427,11 @@
       <created>1395888649653</created>
       <updated>1395888649653</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update README.md">
+      <created>1395888655371</created>
+      <updated>1395888655371</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -773,20 +780,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="19" selection-start="2140" selection-end="2140" vertical-scroll-proportion="-10.961538" vertical-offset="616" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/makepoll.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="29" selection-start="183" selection-end="183" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="935">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysite/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="55" column="0" selection-start="1384" selection-end="1384" vertical-scroll-proportion="0.58894646" vertical-offset="594" max-vertical-offset="2006">
@@ -839,7 +832,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="621" selection-end="621" vertical-scroll-proportion="0.5216606" vertical-offset="0" max-vertical-offset="554">
+        <state line="17" column="0" selection-start="621" selection-end="621" vertical-scroll-proportion="-11.56" vertical-offset="0" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="32" selection-start="1206" selection-end="1206" vertical-scroll-proportion="-3.1153846" vertical-offset="378" max-vertical-offset="986">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/makepoll.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="7" selection-start="161" selection-end="161" vertical-scroll-proportion="0.18888889" vertical-offset="51" max-vertical-offset="1071">
           <folding />
         </state>
       </provider>
