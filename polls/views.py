@@ -91,18 +91,22 @@ def MakePollView(request):
 
         if form.is_valid():
             if request.user.is_authenticated():
-                form.save(commit=False)
-                form.user = request.user
-            question = form.save()
+                print request.user
+                question = form.save(commit=False)
+                question.user = request.user
+                question.save()
+            else:
+                question = form.save()
 
             choice_formset = ChoiceFormset(request.POST, instance=question)
             if choice_formset.is_valid():
                 choice_formset.save()
-
-
-                print 'valid formset!! yippee'
+            else:
+                print 'formset invalid', choice_formset.errors
 
             return HttpResponseRedirect('/polls/') # Redirect after POST
+        else:
+            print 'form invalid', form.errors
     else:
         form = PollForm()
         choice_formset = ChoiceFormset()

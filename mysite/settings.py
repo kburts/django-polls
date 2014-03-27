@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     #'django.contrib.flatpages',
     'crispy_forms',
     'django_extensions',
+    'debug_toolbar',
     #'south',
     'polls',
 )

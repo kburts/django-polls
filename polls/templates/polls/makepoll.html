@@ -4,14 +4,26 @@
 {% block body_block %}
         <div class="container">
             <div class="row">
-                    {% crispy form %}
-                <div id="choices_form">
-                    {% crispy choiceformset %}
-                </div>
-                <div id="add_field" class="btn btn-primary">+</div>
+
+
+<!--
+              {% crispy form %}
+              {% crispy choice_formset %}
+              <button type="post">Submit</button>
+-->
+
+              <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {{ choice_formset.as_p }}
+                <button type="POST">Submit</button>
+              </form>
+              <div id="add_field" class="btn btn-primary">+</div>
             </div>
         </div>
 
+
+<!--
     <script src="http://code.jquery.com/jquery-2.1.0.min.js">
       </script>
 
@@ -32,6 +44,6 @@
            .appendTo("id_form-0-choice_text");
           });
         </script>
-
-{% endblock %}
+-->
+{% endblock body_block %}
     
